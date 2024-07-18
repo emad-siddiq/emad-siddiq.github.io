@@ -87,9 +87,7 @@ function drawStars(){
   }
 }
 
-document.addEventListener("mousemove",function(e){
-  focalLength += e.movementY/2;
-});
+
 
 // Kick off the animation when the mouse enters the canvas
 window.onload = function(e){
