@@ -9,7 +9,7 @@ main {
     background-color: rgb(0, 0, 0, 0.2);
     z-index: 1;
     position:relative;
-    color:white;
+    color:#FFFFFF;
     /* /* align-items:center; */
     text-align: center; 
     width: 100%;
@@ -18,8 +18,20 @@ main {
     padding-right: 30%;
     list-style-position: inside;
     font-size: 16px;
+    font-family: Palatino;
+    font-weight: 600;
+    text-shadow:1px 1px 60px #dc71d7;
+
+    
 }
 
 a {
-    color: rgb(92, 238, 223);
+    color: #2E67F8;
+    font-weight: 800;
+    text-shadow: ;
+}
+
+.AboutMe {
+    text-shadow:5px 5px 60px #71d3dc;
+
 }
