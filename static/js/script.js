@@ -13,8 +13,6 @@ var i;
 
 var animate = false;
 
-// shim layer with setTimeout fallback
-// from http://paulirish.com/2011/requestanimationframe-for-smart-animating/
 window.requestAnimFrame = (function(){
     return  window.requestAnimationFrame       || 
             window.webkitRequestAnimationFrame || 
@@ -53,7 +51,7 @@ function initializeStars(){
 function moveStars(){
   for(i = 0; i < numStars; i++){
     star = stars[i];
-    star.z--;
+    star.z -= 0.1;
     
     if(star.z <= 0){
       star.z = canvas.width;
@@ -90,7 +88,7 @@ function drawStars(){
 }
 
 document.addEventListener("mousemove",function(e){
-  focalLength += e.movementY;
+  focalLength += e.movementY/2;
 });
 
 // Kick off the animation when the mouse enters the canvas
