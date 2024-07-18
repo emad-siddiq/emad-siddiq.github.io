@@ -17,8 +17,9 @@ main {
     padding-top:10%;
     padding-right: 30%;
     list-style-position: inside;
+    font-size: 16px;
 }
 
 a {
-    color: lightblue;
+    color: rgb(72, 220, 225);
 }
