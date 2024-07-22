@@ -17,13 +17,15 @@ main {
     padding-top:10%;
     padding-right: 30%;
     list-style-position: inside;
-    font-size: 20px;
+    font-size: 16px;
     font-family: Palatino;
     font-weight: 600;
     text-shadow:1px 1px 60px #dc71d7;
 
     
 }
+
+main > a 
 
 a {
     color: #2E67F8;

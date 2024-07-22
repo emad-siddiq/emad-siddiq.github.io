@@ -51,7 +51,7 @@ function initializeStars(){
 function moveStars(){
   for(i = 0; i < numStars; i++){
     star = stars[i];
-    star.z -= 0.7;
+    star.z -= 0.2;
     
     if(star.z <= 0){
       star.z = canvas.width;
