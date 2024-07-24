@@ -1,9 +1,9 @@
 # emad.github.io
 
-This is my personal blog that came about out of an unsatisfactory experience working in Next.js for my previous blog and an unwillingness to pay AWS every month for a static IP. 
+This is my personal blog that came about out of an unsatisfactory experience working in Next.js for my previous blog and an unwillingness to pay AWS every month for a static IP. Using [GitHub Pages](https://pages.github.com/)
+I can deploy my website for free by pushing to this repo.
 
-Using [GitHub Pages](https://pages.github.com/)
-I can deploy just by pushing to my repo and have a quick, free way of blogging about my interests. You can find template blog code from this website [here](https://github.com/emad-siddiq/emad-siddiq.github.io/tree/main/static/html/blogs/template).
+You can find template blog code from this website [here](https://github.com/emad-siddiq/emad-siddiq.github.io/tree/main/static/html/blogs/template).
 
 
 My old Next.js website can be found [here](https://github.com/emad-siddiq/personal_website). 
