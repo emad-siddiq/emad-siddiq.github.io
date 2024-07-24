@@ -8,7 +8,7 @@ You can find template blog code from this website [here](https://github.com/emad
 
 My old Next.js website can be found [here](https://github.com/emad-siddiq/personal_website). 
 
-### [Take me to the website](https://emad-siddiq.github.io)!
+### [Take me to the website!](https://emad-siddiq.github.io)
 
 Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
 
