@@ -1,5 +1,7 @@
 # emad.github.io
 
+### [Take me to the website](https://emad-siddiq.github.io)
+
 This is my personal blog that came about out of an unwillingness to pay AWS every month for a static IP and 
 a desire to have a quick way of blogging about my interests. Using [GitHub Pages](https://pages.github.com/)
 I can deploy just by pushing to my repo. You can find template blog code from this website [here](https://github.com/emad-siddiq/emad-siddiq.github.io/tree/main/static/html/blogs/template).
