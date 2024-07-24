@@ -1,7 +1,5 @@
 # emad.github.io
 
-### [Take me to the website](https://emad-siddiq.github.io)
-
 This is my personal blog that came about out of an unsatisfactory experience working in Next.js for my previous blog and an unwillingness to pay AWS every month for a static IP. 
 
 Using [GitHub Pages](https://pages.github.com/)
@@ -10,6 +8,7 @@ I can deploy just by pushing to my repo and have a quick, free way of blogging a
 
 My old Next.js website can be found [here](https://github.com/emad-siddiq/personal_website). 
 
+#### [Take me to the website](https://emad-siddiq.github.io)
 
 Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
 
