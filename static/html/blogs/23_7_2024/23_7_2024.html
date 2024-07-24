@@ -1,0 +1,198 @@
+<html> 
+    <head>
+        <link rel="stylesheet" href="./23_7_2024.css">
+<title>The C ... Part 1.</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/xcode.min.css" integrity="sha512-hDoXdEZ9LKsZWAWm3LMIeAJT///uSvllP7dCOB4lV/cfSb/sv1yhT+q6ORYKubs1keK/w08GKTrYB0UU8dzhvw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/languages/shell.min.js" integrity="sha512-T0o0a78mHd7wa+w6BwrmNj6ATKqM4RWKIbOTG4XXQdgzd/U+uqr2Ghblj35OJc3PgEIF+NFKrKPcWUxJQfZ/aA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"> </script>
+
+<script>hljs.highlightAll();</script>
+</head>
+<body>
+
+    <h1> The C Programming Language Tutorial Part 1.</h1>
+
+    <p> 
+        The C Programming Language is probably the greatest invention of the 20th century. 
+        The fact that the language is actively used 50 years since its inception and remains relatively 
+        unchanged is a testament to its great design. It's also a lucky co-occurence that all programming languages in existence are influenced by C.
+    </p>
+
+    <p> 
+        Before we get started, we need a compiler that turns our code into a machine-understandable binary file.
+        We are going to use <a href="https://gcc.gnu.org/install/">GNU GCC.</a> for this purpose. 
+        You can install this on any Linux installation with:
+<pre class="theme-xcode-min">
+<code>&gt;&gt;&gt; sudo apt-get update 
+&gt;&gt;&gt; sudo apt-get install build-essential
+</code>
+</pre>
+    </p>
+    <p> And: 
+
+<pre class="theme-xcode-min">
+<code>&gt;&gt;&gt; brew install gcc</code>
+</pre> on Mac. </p>
+        
+    <p>Windows users can follow <a href="https://medium.com/@_arupbasak_/setup-c-c-compiler-easiest-way-470db3f1000c"> this tutorial</a>. 
+
+    <p> 
+        In these tutorials, I'll mainly work through the questions in the K & R book and assume you're on a UNIX system. 
+        If you're using Windows it might be best to switch to a Linux distribution like Ubuntu which <a href="https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview">can be installed from a USB.</a>
+        </p>
+    
+        <h1> Exercise 1-1 </h1>
+        <p> Run hello world on your PC </p>
+
+<pre class="theme-xcode-min ">
+--- hello_world.c ---
+<code> 
+#include &ltstdio.h&gt 
+
+int main() {
+    printf("Hello World!");
+}   
+</code>
+</pre>
+
+<p>
+
+
+To run this we type: 
+<pre class="theme-xcode-min">
+<code >$ gcc -o hello_world hello_world.c </code>
+</pre>
+by <a href="https://github.com/RehanSaeed/Bash-Cheat-Sheet">cd</a>-ing into the directory where the hello_world.c file is saved. The -o flag names the output binary.
+
+In the same directory where we compiled the program. We make sure the file is executable 
+<pre class="theme-xcode-min">
+    <code>$ chmod +x hello_world </code>
+</pre>
+and then run it with
+<pre class="theme-xcode-min">
+    <code class="bash">$ ./hello_world</code>. 
+    </pre>
+
+This should output:
+<pre class="theme-xcode-min">
+<code class="bash">$ Hello World!</code>
+</pre>
+</p>
+
+<h2> 
+ Explanation:
+</h2>
+
+<p> 
+
+    <pre class="theme-xcode-min ">
+        <code> #include &ltstdio.h&gt 
+        </code> </pre>
+
+    The first line includes stdio.h file which contains function declarations. This is a part of the <a href="https://en.wikipedia.org/wiki/C_standard_library">standard C library </a>. The library is <a href=" https://forums.developer.apple.com/forums/thread/677725">unnecessarily difficult </a> to get your hands on with a mac. But on Linux <a href="https://stackoverflow.com/questions/5925678/location-of-c-standard-library"> its fairly simple </a>.
+</p>
+
+<p>
+
+    <pre class="theme-xcode-min ">
+        <code> int main() {
+    printf("Hello World!");
+ }   
+        </code> </pre>
+
+    The next block of code defines a function main, that uses the printf function from the stdio library to print "Hello World!" to the screen. 
+    </p>
+
+
+    <p>
+        <pre class="theme-xcode-min ">
+            <code> int main</code> </pre>
+        The function name <b>main</b> is prefixed with int because by default C functions return the number 0 which is of type int (for integer). 
+    </p>
+
+    <p>
+        <pre class="theme-xcode-min ">
+            <code>main() {
+    ...
+}   </code> </pre>
+        The paranthesis "()", hold future arguments to functions that take arguments like f(x) or g(y) in algebra.
+        The curly braces mark the body of the main function.
+    </p>
+
+    <p><b>main</b> is a very special function. It is where any C program begins executing its instructions line by line.</p>
+
+    <h3>Exercise Files</h3>
+
+    <a href="./examples/1-1_hello_world.c">hello_world.c</a>
+
+    
+
+    <h1> Exercise 1-2 </h1>
+
+    <p> This next exercise emphasizes the fact that instructions execute line by line by showing that \n, the newline character, is not added automatically. 
+        </p>
+
+        <p> 
+
+            We are told the example from the previous exercise can be rewritten as:
+            <pre class="theme-xcode-min ">
+--- hello_world_2.c ---
+<code> 
+#include &ltstdio.h&gt 
+
+int main() {
+    printf("Hello");
+    printf(" World!");
+    printf("\n");
+}   
+</code>
+</pre>
+If we compile this again with:
+<pre class="theme-xcode-min">
+    <code >$ gcc -o hello_world_2 hello_world_2.c </code>
+    </pre>
+    We get the same output. 
+    The goal of the exercise is to experiment and find out which other backslash characters like \n, \b, that we can add to a string and their functionality.
+
+        </p>
+
+
+ <p> Here is my experimetation: 
+    <pre>
+
+ <code> #include &ltstdio.h&gt 
+    
+void backslash() {
+    printf("\\1:, \1 <-- empty since this represents an octal which is a non-printable  control character\n");
+    printf("\\a:, \a <-- Produces beep if run in terminal on Mac, doesn't work inside VSCode terminal \n");
+    printf("\\b:, erase\b <-- Erases character preceding it\n");
+    printf("\\c:, \c <-- gcc: warning: unknown escape sequence\n");
+    printf("\\d:, \d <-- gcc: warning: unknown escape sequence\n");
+    printf("\\t:, Adds a \t tab.\n");
+    printf("\\g \g, <-- gcc: warning: unknown escape sequence");
+}
+
+int main() {
+    printf("Hello");
+    printf(" World!");
+    printf("\n");
+    //putchar('\a');
+
+    backslash();
+} 
+
+    
+    </code>
+    </pre>       
+    I add a function that returns void to collect my printf statements.
+</p>
+   
+<h3>Exercise Files</h3>
+<a href="./examples/1-2_hello_world.c">hello_world.c</a>
+
+        
+
+
+
+</body>
+
+</html>

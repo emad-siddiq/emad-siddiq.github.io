@@ -1,0 +1,56 @@
+<html> 
+    <head>
+        <link rel="stylesheet" href="./23_7_2024.css">
+<title>The C Programming Language Tutorial P1.</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"> </script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+    <h1> The C Programming Language P1.</h1>
+
+    <p> 
+        The C Programming Language is probably the greatest invention of the 20th century. 
+        The fact that the language is actively used 50 years since its inception and remains relatively 
+        unchanged is a testament to its great design. It's also a lucky co-occurence that all programming languages in existence are influenced by C.
+    </p>
+
+    <p> 
+        Before we get started, we need a compiler that turns our code into a machine-understandable binary file.
+        We are going to use <a href="https://gcc.gnu.org/install/">GNU GCC.</a> for this purpose. 
+        You can install this on any Linux installation with: </p>
+
+ <code>
+sudo apt-get update 
+sudo apt-get install build-essential
+</code>
+
+    <p> And: </p>
+        <code> brew install gcc </code>
+        <p>on Mac. </p>
+        
+    <p>Windows users can follow <a href="https://medium.com/@_arupbasak_/setup-c-c-compiler-easiest-way-470db3f1000c"> this tutorial</a>. 
+
+    <p> 
+        In these tutorials, I'll mainly work through the questions in the K & R book. 
+        </p>
+    
+        <p> Exercise 1-1 Run hello world on your PC </p>
+
+<code> 
+#include <stdio.h> 
+
+int main() {
+    printf("Hello World!");
+}   
+</code>
+        
+        
+
+
+</body>
+
+</html>
