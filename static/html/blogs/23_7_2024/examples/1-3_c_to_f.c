@@ -11,6 +11,7 @@ int main() {
     step = 20; /* step size */
 
     celsius = lower;
+    
     printf("%6s %6s\n", "Celsius", "Fahrenheit");
 
     while (celsius <= upper) {
