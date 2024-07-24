@@ -2,9 +2,10 @@
 
 ### [Take me to the website](https://emad-siddiq.github.io)
 
-This is my personal blog that came about out of an unwillingness to pay AWS every month for a static IP and 
-a desire to have a quick way of blogging about my interests. Using [GitHub Pages](https://pages.github.com/)
-I can deploy just by pushing to my repo. You can find template blog code from this website [here](https://github.com/emad-siddiq/emad-siddiq.github.io/tree/main/static/html/blogs/template).
+This is my personal blog that came about out of an unsatisfactory experience working in Next.js for my previous blog and an unwillingness to pay AWS every month for a static IP and 
+
+Using [GitHub Pages](https://pages.github.com/)
+I can deploy just by pushing to my repo and have a quick, free way of blogging about my interests. You can find template blog code from this website [here](https://github.com/emad-siddiq/emad-siddiq.github.io/tree/main/static/html/blogs/template).
 
 
 My old Next.js website can be found [here](https://github.com/emad-siddiq/personal_website). 
