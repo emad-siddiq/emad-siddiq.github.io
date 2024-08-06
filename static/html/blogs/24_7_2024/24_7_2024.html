@@ -1,7 +1,7 @@
 <html> 
-    
+
 <head>
-    <link rel="stylesheet" href="./template.css">
+    <link rel="stylesheet" href="./24_7_2024.css">
     <title>The C ... Part 1.</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/xcode.min.css" integrity="sha512-hDoXdEZ9LKsZWAWm3LMIeAJT///uSvllP7dCOB4lV/cfSb/sv1yhT+q6ORYKubs1keK/w08GKTrYB0UU8dzhvw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -10,30 +10,98 @@
 
 <body>
 
-    <pre class="theme-xcode-min ">
-        --- hello_world.c ---
-        <code> 
-        #include &ltstdio.h&gt 
-        
-        int main() {
-            printf("Hello World!");
-        }   
-        </code>
-        </pre>
-
     <h1> The C Tutorial Part 2.</h1>
 
     <p> 
-        Hello and welcome back! I am very glad to be able to write two days in a row. So without any further ado, we will quickly recap that last time
+        Hello and welcome back! So without any further ado, we will quickly recap that last time
         we learnt about how to write C functions and run them on our machines. 
     </p>
 
     
-    <p> And: 
+    <p> 
+        Recall the while loop from <a href="./../23_7_2024/23_7_2024.html">the previous tutorial</a>. It helps us repeatedly run a block of code that it encapsulates inside curly braces {}.
+    </p>
+
+    <p>
+        Today we are going to introduce a very similar concept called <i>the for loop</i>. The main difference is that instead of just checking for a condition, 
+        the () include three statements terminated by a semicolon <b>;</b>. The first initializes variables, the second checks the condition, the third updates the variables.
+        In this way we end up with a more nuanced means of repeatedly running a block of code. 
+    </p>
+
+    <p> 
+        For example, the previous while loop Fahrenheit-Celsius convertor can be rewritten as:
+
+<pre class="theme-xcode-min ">--- f_to_c.c ---
+<code>#include &ltstdio.h&gt 
+
+int main() {
+    int fahr;
+    for (fahr = 0; fahr <= 300; fahr = fahr + 20) {
+        printf("%4d %6.1f\n", fahr, (5.0/9.0) * (fahr-32));
+    }
+}</code></pre>
+
+We first declare a variable fahr to be of type int. Then in the 3 step loop condition:
+<ol>
+    <li>
+        We first initialize <i>fahr</i> to be 0. We then run the body of the for loop and print <i>fahr</i> 
+        as well as <br> the calculated value of converting the current fahr value to Celsius.
+    </li>
+    <li>
+        After it has run once, we check if <i>fahr</i> is less than 300 with <i>fahr</i> <= 300;
+    </li>
+    <li>
+        If it is, we add 20 to <i>fahr</i>. Otherwise the for loop ends.
+    </li>
+</ol>  
+</p>
+
+<h3>Exercise 1-5</h3>
+
+<p>
+    The goal of Exercise 1-5 is to edit the code above to have it print the table in reverse order i.e. from 300 to 0. 
+    This is not an unreasonable request and we can implement it with a few changes:
+
+<pre class="theme-xcode-min ">--- f_to_c.c ---
+<code>#include &ltstdio.h&gt 
+
+int main() {
+    int fahr;
+    for (fahr = 300; fahr >= 0; fahr = fahr - 20) {
+        printf("%4d %6.1f\n", fahr, (5.0/9.0) * (fahr-32));
+    }
+}</code></pre>
+
+We initialize <b>fahr</b> at 300 and subtract 20 while fahr is greater than or equal to 0. </p>
+
+<p>
+
+We can improve on this code with symbolic constants to store constants. <br>During compilation, unquoted occurences of the symbolic constant are replaced with the corresponding string.
+<pre class="theme-xcode-min ">--- f_to_c.c ---
+<code>#include &ltstdio.h&gt 
+
+#define LOWER 0
+#define UPPER 300
+#define STEP 20
+
+int main() {
+    int fahr;
+    for (fahr = UPPER; fahr >= LOWER; fahr = fahr - STEP) {
+        printf("%4d %6.1f\n", fahr, (5.0/9.0) * (fahr-32));
+    }
+}</code></pre>
+
+</p>
 
 
 <h3>Exercise Files</h3>
-<a href="./examples/1-2_hello_world.c">hello_world.c</a>
+<a href="./examples/1-5_for_loop.c">for_loop.c</a>
+<a href="./examples/1-5_symbolic_constants.c">symbolic_constants.c</a>
+
+<p> Next we deal with I/O. We are introduced to two fgetc and fputc. 
+    You can read about them online <a href="">here</a> or run $man fgetc in your terminal.</p>
+
+    
 
   
 

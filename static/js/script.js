@@ -4,7 +4,7 @@ var c = canvas.getContext("2d");
 
 var numStars = 1000;
 var radius = 1;
-var focalLength = canvas.width*5;
+var focalLength = canvas.width*2;
 
 var centerX, centerY;
 
@@ -12,6 +12,10 @@ var stars = [], star;
 var i;
 
 var animate = false;
+
+function randomInteger(max = 256){
+  return Math.floor(Math.random()*max);
+}
 
 window.requestAnimFrame = (function(){
     return  window.requestAnimationFrame       || 
@@ -23,6 +27,10 @@ window.requestAnimFrame = (function(){
               window.setTimeout(callback, 1000 / 60);
             };
   })();
+
+  function randomInteger(max = 256){
+  return Math.floor(Math.random()*max);
+}
 
 initializeStars();
 
@@ -69,9 +77,9 @@ function drawStars(){
     initializeStars();
   }
   
-  c.fillStyle = "black";
-  c.fillRect(0,0, canvas.width, canvas.height);
   c.fillStyle = "white";
+  c.fillRect(0,0, canvas.width, canvas.height);
+  c.fillStyle = "green";
   for(i = 0; i < numStars; i++){
     star = stars[i];
     
@@ -82,7 +90,10 @@ function drawStars(){
     pixelRadius = radius * (focalLength / star.z);
     
     c.beginPath();
-    c.arc(pixelX, pixelY, pixelRadius, 0, 2 * Math.PI);
+
+    //c.arc(pixelX, pixelY, pixelRadius, 0, 2 * Math.PI);
+    c.fillRect(pixelX,pixelY,2 * pixelRadius,2 * pixelRadius);
+
     c.fill();
   }
 }
