@@ -1,109 +1,266 @@
-//Adapted from https://curran.github.io/HTML5Examples/
-var canvas = document.getElementById("canvas");
-var c = canvas.getContext("2d");
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
 
-var numStars = 1000;
-var radius = 1;
-var focalLength = canvas.width*2;
+let width, height;
+let isAnimating = true;
+let currentAnimation = 'matrix';
 
-var centerX, centerY;
+// Matrix rain variables
+let columns, drops;
+const FONT_SIZE = 16;
+const MAX_DROPS = 100;
 
-var stars = [], star;
-var i;
+// Particle variables
+let particles = [];
+const PARTICLE_COUNT = 200;
 
-var animate = false;
+// Colors
+const COLORS = ['#00ff00', '#00ffff', '#ff00ff', '#ffff00', '#ffffff'];
 
-function randomInteger(max = 256){
-  return Math.floor(Math.random()*max);
+function init() {
+    resizeCanvas();
+    createDrops();
+    createParticles();
+    animationLoop();
+    setupHoverEffect();
+    setupAnimationToggle();
+    setupInstructionsClose();
 }
 
-window.requestAnimFrame = (function(){
-    return  window.requestAnimationFrame       || 
-            window.webkitRequestAnimationFrame || 
-            window.mozRequestAnimationFrame    || 
-            window.oRequestAnimationFrame      || 
-            window.msRequestAnimationFrame     || 
-            function( callback ){
-              window.setTimeout(callback, 1000 / 60);
-            };
-  })();
-
-  function randomInteger(max = 256){
-  return Math.floor(Math.random()*max);
+function resizeCanvas() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+    columns = Math.floor(width / FONT_SIZE);
+    ctx.font = FONT_SIZE + "px 'Source Code Pro'";
 }
 
-initializeStars();
-
-function executeFrame(){
-  if(animate)
-    requestAnimFrame(executeFrame);
-  moveStars();
-  drawStars();
-}
-
-function initializeStars(){
-  centerX = canvas.width / 2;
-  centerY = canvas.height / 2;
-  
-  stars = [];
-  for(i = 0; i < numStars; i++){
-    star = {
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      z: Math.random() * canvas.width
-    };
-    stars.push(star);
-  }
-}
-
-function moveStars(){
-  for(i = 0; i < numStars; i++){
-    star = stars[i];
-    star.z -= 0.2;
-    
-    if(star.z <= 0){
-      star.z = canvas.width;
+// Matrix rain functions
+function createDrops() {
+    drops = [];
+    for (let i = 0; i < columns; i++) {
+        drops[i] = Math.floor(Math.random() * height / FONT_SIZE) * -1;
     }
-  }
 }
 
-function drawStars(){
-  var pixelX, pixelY, pixelRadius;
-  
-  // Resize to the screen
-  if(canvas.width != window.innerWidth || canvas.width != window.innerWidth){
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    initializeStars();
-  }
-  
-  c.fillStyle = "white";
-  c.fillRect(0,0, canvas.width, canvas.height);
-  c.fillStyle = "green";
-  for(i = 0; i < numStars; i++){
-    star = stars[i];
-    
-    pixelX = (star.x - centerX) * (focalLength / star.z);
-    pixelX += centerX;
-    pixelY = (star.y - centerY) * (focalLength / star.z);
-    pixelY += centerY;
-    pixelRadius = radius * (focalLength / star.z);
-    
-    c.beginPath();
-
-    //c.arc(pixelX, pixelY, pixelRadius, 0, 2 * Math.PI);
-    c.fillRect(pixelX,pixelY,2 * pixelRadius,2 * pixelRadius);
-
-    c.fill();
-  }
+function getRandomCharacter() {
+    return String.fromCharCode(33 + Math.floor(Math.random() * 94));
 }
 
+function drawMatrix() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+    ctx.fillRect(0, 0, width, height);
 
+    ctx.fillStyle = "#00ff00";
+    for (let i = 0; i < drops.length; i++) {
+        const text = getRandomCharacter();
+        ctx.fillText(text, i * FONT_SIZE, drops[i] * FONT_SIZE);
 
-// Kick off the animation when the mouse enters the canvas
-window.onload = function(e){
-  animate = true;
-  executeFrame();
-};
+        if (isAnimating) {
+            if (drops[i] * FONT_SIZE > height && Math.random() > 0.98) {
+                drops[i] = 0;
+            }
+            drops[i] += 0.5;
+        }
+    }
+}
 
-executeFrame();
+// Particle functions
+function createParticles() {
+    particles = [];
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            z: Math.random() * width,
+            radius: Math.random() * 2 + 1,
+            speedX: (Math.random() - 0.5) * 2,
+            speedY: (Math.random() - 0.5) * 2,
+            color: COLORS[Math.floor(Math.random() * COLORS.length)]
+        });
+    }
+}
+
+function drawDiffusion() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+    ctx.fillRect(0, 0, width, height);
+
+    particles.forEach(p => {
+        if (isAnimating) {
+            p.x += p.speedX;
+            p.y += p.speedY;
+
+            if (p.x < 0 || p.x > width) p.speedX *= -1;
+            if (p.y < 0 || p.y > height) p.speedY *= -1;
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+    });
+}
+
+function drawRadial() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+    ctx.fillRect(0, 0, width, height);
+
+    particles.forEach(p => {
+        if (isAnimating) {
+            const angle = Math.atan2(p.y - height / 2, p.x - width / 2);
+            const distance = Math.sqrt((p.x - width / 2) ** 2 + (p.y - height / 2) ** 2);
+            p.x += Math.cos(angle) * (distance * 0.01);
+            p.y += Math.sin(angle) * (distance * 0.01);
+
+            if (distance < 5) {
+                p.x = Math.random() * width;
+                p.y = Math.random() * height;
+            }
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+    });
+}
+
+function drawVortex() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+    ctx.fillRect(0, 0, width, height);
+
+    particles.forEach(p => {
+        if (isAnimating) {
+            const angle = Math.atan2(p.y - height / 2, p.x - width / 2);
+            const distance = Math.sqrt((p.x - width / 2) ** 2 + (p.y - height / 2) ** 2);
+            p.x += Math.cos(angle + distance * 0.01) * 2;
+            p.y += Math.sin(angle + distance * 0.01) * 2;
+
+            if (p.x < 0 || p.x > width || p.y < 0 || p.y > height) {
+                p.x = width / 2 + (Math.random() - 0.5) * 100;
+                p.y = height / 2 + (Math.random() - 0.5) * 100;
+            }
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+    });
+}
+function drawStarfield() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+    ctx.fillRect(0, 0, width, height);
+
+    particles.forEach(p => {
+        if (isAnimating) {
+            p.z = p.z - 1;
+            if (p.z <= 0) {
+                p.z = width;
+                p.x = Math.random() * width * 2 - width;
+                p.y = Math.random() * height * 2 - height;
+            }
+        }
+
+        const scale = width / p.z;
+        const x = (p.x * scale) + width / 2;
+        const y = (p.y * scale) + height / 2;
+
+        ctx.beginPath();
+        ctx.arc(x, y, Math.max(0.5, 15 / p.z), 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+    });
+}
+
+function drawBinaryStream() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+    ctx.fillRect(0, 0, width, height);
+
+    ctx.fillStyle = "#00ff00";
+    for (let i = 0; i < columns; i++) {
+        const text = Math.round(Math.random()).toString();
+        ctx.fillText(text, i * FONT_SIZE, drops[i] * FONT_SIZE);
+
+        if (isAnimating) {
+            drops[i] += 0.5;
+            if (drops[i] * FONT_SIZE > height && Math.random() > 0.98) {
+                drops[i] = 0;
+            }
+        }
+    }
+}
+
+function animationLoop() {
+    switch(currentAnimation) {
+        case 'matrix':
+            drawMatrix();
+            break;
+        case 'diffusion':
+            drawDiffusion();
+            break;
+        case 'radial':
+            drawRadial();
+            break;
+        case 'vortex':
+            drawVortex();
+            break;
+        case 'starfield':
+            drawStarfield();
+            break;
+        case 'binary':
+            drawBinaryStream();
+            break;
+    }
+    requestAnimationFrame(animationLoop);
+}
+
+function setupHoverEffect() {
+    const main = document.querySelector('main');
+    const mainRect = main.getBoundingClientRect();
+    const centerWidth = mainRect.width;
+    const centerLeft = (width - centerWidth) / 2;
+    const centerRight = centerLeft + centerWidth;
+
+    document.addEventListener('mousemove', (event) => {
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+
+        isAnimating = !(mouseX >= centerLeft && mouseX <= centerRight && mouseY >= 0 && mouseY <= height);
+    });
+}
+
+function setupAnimationToggle() {
+    document.addEventListener('keydown', (event) => {
+        switch(event.key) {
+            case '1':
+                currentAnimation = 'matrix';
+                break;
+            case '2':
+                currentAnimation = 'diffusion';
+                break;
+            case '3':
+                currentAnimation = 'radial';
+                break;
+            case '4':
+                currentAnimation = 'vortex';
+                break;
+            case '5':
+                currentAnimation = 'starfield';
+                break;
+            case '6':
+                currentAnimation = 'binary';
+                break;
+        }
+    });
+}
+
+window.addEventListener('resize', () => {
+    resizeCanvas();
+    createDrops();
+    createParticles();
+    setupHoverEffect();
+});
+
+window.addEventListener('load', init);

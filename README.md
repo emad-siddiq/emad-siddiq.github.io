@@ -5,6 +5,13 @@ I can deploy my website for free by pushing to this repo.
 
 You can find template blog code from this website [here](https://github.com/emad-siddiq/emad-siddiq.github.io/tree/main/static/html/blogs/template).
 
+## Build
+
+Since this is a static website in js, there is no need to build atm.
+
+## Run
+
+Open the `index.html` file in your browser.
 
 My old Next.js website can be found [here](https://github.com/emad-siddiq/personal_website). 
 

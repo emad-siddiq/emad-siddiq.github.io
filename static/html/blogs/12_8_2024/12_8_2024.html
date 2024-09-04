@@ -1,0 +1,57 @@
+<html> 
+
+<head>
+    <link rel="stylesheet" href="./12_8_2024.css">
+    <title>The C ... Part 1.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/xcode.min.css" integrity="sha512-hDoXdEZ9LKsZWAWm3LMIeAJT///uSvllP7dCOB4lV/cfSb/sv1yhT+q6ORYKubs1keK/w08GKTrYB0UU8dzhvw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+    <h1>Using Tensorflow.js to host an ML model in the browser.</h1>
+
+    <p> 
+        Hello and welcome back! So without any further ado, we will quickly recap that last time
+        we learnt about how to write C functions and run them on our machines. 
+    </p>
+
+    
+  
+
+<pre class="theme-xcode-min ">--- f_to_c.c ---
+<code>#include &ltstdio.h&gt 
+
+int main() {
+    int fahr;
+    for (fahr = 0; fahr <= 300; fahr = fahr + 20) {
+        printf("%4d %6.1f\n", fahr, (5.0/9.0) * (fahr-32));
+    }
+}</code></pre>
+
+
+
+<h3>Exercise 1-5</h3>
+
+<p>
+    The goal of Exercise 1-5 is to edit the code above to have it print the table in reverse order i.e. from 300 to 0. 
+    This is not an unreasonable request and we can implement it with a few changes:
+
+<pre class="theme-xcode-min ">--- f_to_c.c ---
+<code>#include &ltstdio.h&gt 
+
+int main() {
+    int fahr;
+    for (fahr = 300; fahr >= 0; fahr = fahr - 20) {
+        printf("%4d %6.1f\n", fahr, (5.0/9.0) * (fahr-32));
+    }
+}</code></pre>
+
+We initialize <b>fahr</b> at 300 and subtract 20 while fahr is greater than or equal to 0. </p>
+
+<p>
+
+  
+
+</html>
