@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d');
 
 let width, height;
 let isAnimating = true;
-let currentAnimation = 'matrix';
+let currentAnimation = 'vortex';
 
 // Matrix rain variables
 let columns, drops;
