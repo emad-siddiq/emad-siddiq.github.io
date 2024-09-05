@@ -256,6 +256,15 @@ function setupAnimationToggle() {
     });
 }
 
+function setupInstructionsClose() {
+    const closeButton = document.getElementById('close-instructions');
+    const instructionsDiv = document.getElementById('animation-instructions');
+
+    closeButton.addEventListener('click', () => {
+        instructionsDiv.style.display = 'none';
+    });
+}
+
 window.addEventListener('resize', () => {
     resizeCanvas();
     createDrops();

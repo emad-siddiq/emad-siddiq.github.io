@@ -121,3 +121,22 @@ a:hover {
         font-size: 1.5rem;
     }
 }
+
+#animation-instructions {
+    font-size: 0.8rem;
+    max-width: 200px;
+}
+
+@media (max-width: 768px) {
+    .matrix-text {
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    #animation-instructions {
+        display: none; /* Hide instructions on mobile */
+    }
+}
