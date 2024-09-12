@@ -96,6 +96,7 @@ a:hover {
         0 0 5px var(--neon-purple),
         0 0 10px var(--neon-purple),
         0 0 15px var(--neon-purple);
+    margin-top: -100px;
 }
 
 #AboutMe a:hover {

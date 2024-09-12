@@ -3,9 +3,9 @@ const ctx = canvas.getContext('2d');
 
 let width, height;
 let isAnimating = true;
-let currentAnimation = 'binary'; // Initially set to binary
+let currentAnimation = 'vortex'; // Initially set to vortex
 
-// Matrix rain variables
+// Binary stream variables
 let columns, drops;
 const FONT_SIZE = 16;
 
@@ -52,8 +52,8 @@ function drawBinaryStream() {
         ctx.fillText(text, i * FONT_SIZE, drops[i] * FONT_SIZE);
 
         if (isAnimating) {
-            drops[i] += 0.1; // Slowed down from 0.5 to 0.1
-            if (drops[i] * FONT_SIZE > height && Math.random() > 0.99) { // Changed from 0.98 to 0.99 to further slow down reset
+            drops[i] += 1; 
+            if (drops[i] * FONT_SIZE > height && Math.random() > 0.99) {
                 drops[i] = 0;
             }
         }
@@ -73,7 +73,7 @@ function createParticles() {
     }
 }
 
-function drawRadial() {
+function drawVortex() {
     ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
     ctx.fillRect(0, 0, width, height);
 
@@ -81,12 +81,12 @@ function drawRadial() {
         if (isAnimating) {
             const angle = Math.atan2(p.y - height / 2, p.x - width / 2);
             const distance = Math.sqrt((p.x - width / 2) ** 2 + (p.y - height / 2) ** 2);
-            p.x += Math.cos(angle) * (distance * 0.01);
-            p.y += Math.sin(angle) * (distance * 0.01);
+            p.x += Math.cos(angle + distance * 0.01) * 2;
+            p.y += Math.sin(angle + distance * 0.01) * 2;
 
-            if (distance < 5) {
-                p.x = Math.random() * width;
-                p.y = Math.random() * height;
+            if (p.x < 0 || p.x > width || p.y < 0 || p.y > height) {
+                p.x = width / 2 + (Math.random() - 0.5) * 100;
+                p.y = height / 2 + (Math.random() - 0.5) * 100;
             }
         }
 
@@ -101,7 +101,7 @@ function animationLoop() {
     if (currentAnimation === 'binary') {
         drawBinaryStream();
     } else {
-        drawRadial();
+        drawVortex();
     }
     requestAnimationFrame(animationLoop);
 }
@@ -110,10 +110,10 @@ function setupAnimationToggle() {
     document.addEventListener('keydown', (event) => {
         switch(event.key) {
             case '1':
-                currentAnimation = 'binary';
+                currentAnimation = 'vortex';
                 break;
             case '2':
-                currentAnimation = 'radial';
+                currentAnimation = 'binary';
                 break;
         }
     });
