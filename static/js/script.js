@@ -13,8 +13,8 @@ const FONT_SIZE = 16;
 let particles = [];
 const PARTICLE_COUNT = 200;
 
-// Colors
-const COLORS = ['#00ff00', '#00ffff', '#ff00ff', '#ffff00', '#ffffff'];
+// Colors - Modified to remove pink and add more blue/green tones
+const COLORS = ['#00ff00', '#00ffff', '#0080ff', '#40e0d0', '#ffffff'];
 
 function init() {
     resizeCanvas();
