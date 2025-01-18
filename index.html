@@ -10,11 +10,11 @@
             theme: {
                 extend: {
                     colors: {
-                        neonPurple: '#ff00ff',
-                        neonBlue: '#00ffff',
-                        neonYellow: '#ffff00',
-                        matrixGreen: '#00ff00',
-                        textColor: '#f0b3ff',
+                        oceanBlue: '#a6d9ff',  // Light ocean blue
+                        softWhite: '#f3f8ff',  // Soft white
+                        sandYellow: '#d2b179', // Darker sandy yellow for accent
+                        darkBlue: '#2b5577',   // Dark blue for text contrast
+                        accentGreen: '#7be0a7', // Light green for accents
                     },
                     fontFamily: {
                         'code': ['Source Code Pro', 'monospace'],
@@ -26,39 +26,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
     <link href="./static/css/styles.css" rel="stylesheet">
 </head>
-<body class="bg-black min-h-screen text-textColor font-code">
+<body class="bg-gradient-to-t from-oceanBlue via-softWhite to-oceanBlue min-h-screen text-darkBlue font-code">
     <canvas id="canvas" class="fixed top-0 left-0 w-full h-full -z-10"></canvas>
     <div class="container mx-auto px-4 py-8 md:py-16 relative z-10">
         <header class="text-center mb-8 md:mb-12">
-            <h1 class="text-3xl md:text-4xl font-bold mb-4 text-matrixGreen">> Emad_Siddiq</h1>
-            <img src="./static/assets/pictures/portrait.png" alt="Emad Siddiq" class="rounded-full mx-auto shadow-lg mb-6 w-32 h-32 md:w-48 md:h-48 object-cover border-2 border-neonPurple">
-            <p class="text-xl md:text-2xl mb-4 md:mb-6 text-matrixGreen hello-world">> Hello_World() {</p>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4 text-accentGreen">> Emad_Siddiq</h1>
+            <img src="./static/assets/pictures/portrait.png" alt="Emad Siddiq" class="rounded-full mx-auto shadow-lg mb-6 w-32 h-32 md:w-48 md:h-48 object-cover border-2 border-accentGreen">
+            <p class="text-xl md:text-2xl mb-4 md:mb-6 text-accentGreen hello-world">> Hello_World() {</p>
             <nav class="space-x-2 md:space-x-4">
-                <a href="./static/assets/Emad_Siddiq_resume.pdf" class="text-base md:text-lg font-semibold text-neonBlue hover:text-neonBlue">[Resume]</a>
-                <a href="https://www.github.com/emad-siddiq" class="text-base md:text-lg font-semibold text-neonBlue hover:text-neonBlue">[GitHub]</a>
-                <a href="./static/html/blogs/blog.html" class="text-base md:text-lg font-semibold text-neonBlue hover:text-neonBlue">[Blog]</a>
+                <a href="./static/assets/Emad_Siddiq_resume.pdf" class="text-base md:text-lg font-semibold text-sandYellow hover:text-accentGreen">[Resume]</a>
+                <a href="https://www.github.com/emad-siddiq" class="text-base md:text-lg font-semibold text-sandYellow hover:text-accentGreen">[GitHub]</a>
+                <a href="./static/html/blogs/blog.html" class="text-base md:text-lg font-semibold text-sandYellow hover:text-accentGreen">[Blog]</a>
             </nav>
-            <p class="text-xl md:text-2xl mt-4 md:mt-6 text-matrixGreen hello-world">}</p>
+            <p class="text-xl md:text-2xl mt-4 md:mt-6 text-accentGreen hello-world">}</p>
         </header>
 
-        <main class="bg-black bg-opacity-90 rounded-lg shadow-xl p-4 md:p-8 max-w-2xl mx-auto border border-matrixGreen">
+        <main class="bg-white bg-opacity-90 rounded-lg shadow-xl p-4 md:p-8 max-w-2xl mx-auto border border-accentGreen">
             <section id="AboutMe" class="space-y-4 matrix-text">
-                <p class="text-matrixGreen command-prompt">> cat about.txt</p>
-                <p class="neon-text">I studied Data Science & Political Economy during my undergraduate at UC Berkeley.</p>
-                <p class="neon-text">Following graduation, I worked as a Software Engineer at <a href="https://www.fin3.tech" class="text-neonPurple hover:text-neonBlue">Fin3 Technologies</a> and was later part of the IAM team at <a href="https://www.flexport.com" class="text-neonPurple hover:text-neonBlue">Flexport Inc.</a></p>
-                <p class="neon-text">I am currently searching for my next role and would be happy to chat: <a href="mailto:emadsiddiq@berkeley.edu" class="text-neonPurple hover:text-neonBlue">emadsiddiq@berkeley.edu</a></p>
-                <p class="text-matrixGreen command-prompt">> _</p>
+                <p class="text-accentGreen command-prompt">> cat about.txt</p>
+                <p class="neon-text text-sandYellow">I studied Data Science & Political Economy during my undergraduate at UC Berkeley.</p>
+                <p class="neon-text text-sandYellow">Following graduation, I worked as a Software Engineer at <a href="https://www.fin3.tech" class="text-accentGreen hover:text-sandYellow">Fin3 Technologies</a> and was later part of the IAM team at <a href="https://www.flexport.com" class="text-accentGreen hover:text-sandYellow">Flexport Inc.</a></p>
+                <p class="neon-text text-sandYellow">I am currently searching for my next role and would be happy to chat: <a href="mailto:emadsiddiq@berkeley.edu" class="text-accentGreen hover:text-sandYellow">emadsiddiq@berkeley.edu</a></p>
+                <p class="text-accentGreen command-prompt">> _</p>
             </section>
         </main>
-    </div>
-
-    <div id="animation-instructions" class="fixed bottom-4 right-4 bg-black bg-opacity-80 p-4 rounded-lg border border-neonPurple text-matrixGreen">
-        <button id="close-instructions" class="absolute top-2 right-2 text-matrixGreen hover:text-neonBlue">&times;</button>
-        <p>Switch animations with<br> your keyboard digits:</p>
-        <ul class="list-disc list-inside">
-            <li>1 for Vortex</li>
-            <li>2 for Binary Stream</li>
-        </ul>
     </div>
 
     <script src="./static/js/script.js"></script>
