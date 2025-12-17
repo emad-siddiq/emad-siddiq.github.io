@@ -3,55 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emad Siddiq | Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        oceanBlue: '#a6d9ff',  // Light ocean blue
-                        softWhite: '#f3f8ff',  // Soft white
-                        qatarMaroon: '#8a153b', // Darker sandy yellow for accent
-                        darkBlue: '#2b5577',   // Dark blue for text contrast
-                        accentGreen: '#0ec946', // Light green for accents
-                    },
-                    fontFamily: {
-                        'code': ['Source Code Pro', 'monospace'],
-                    },
-                },
-            },
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
-    <link href="./static/css/styles.css" rel="stylesheet">
+    <title>Emad Siddiq | Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="./static/css/index.css" rel="stylesheet">
 </head>
-<body class="bg-gradient-to-t from-oceanBlue via-softWhite to-oceanBlue min-h-screen text-darkBlue font-code">
-    <canvas id="canvas" class="fixed top-0 left-0 w-full h-full -z-10"></canvas>
-    <div class="container mx-auto px-4 py-8 md:py-16 relative z-10">
-        <header class="text-center mb-8 md:mb-12">
-            <h1 class="text-3xl md:text-4xl font-bold mb-4 text-accentGreen">> Emad_Siddiq</h1>
-            <img src="./static/assets/pictures/portrait.png" alt="Emad Siddiq" class="rounded-full mx-auto shadow-lg mb-6 w-32 h-32 md:w-48 md:h-48 object-cover border-2 border-accentGreen">
-            <p class="text-xl md:text-2xl mb-4 md:mb-6 text-accentGreen hello-world">> Hello_World() {</p>
-            <nav class="space-x-2 md:space-x-4">
-                <a href="./static/assets/Emad_Siddiq_resume.pdf" class="text-base md:text-lg font-semibold text-qatarMaroon hover:text-accentGreen">[Resume]</a>
-                <a href="https://www.github.com/emad-siddiq" class="text-base md:text-lg font-semibold text-qatarMaroon hover:text-accentGreen">[GitHub]</a>
-                <a href="https://www.linkedin.com/in/esiddiq" class="text-base md:text-lg font-semibold text-qatarMaroon hover:text-accentGreen">[LinkedIn]</a>
-            </nav>
-            <p class="text-xl md:text-2xl mt-4 md:mt-6 text-accentGreen hello-world">}</p>
+<body>
+    <div class="page">
+        <div class="orb orb-top"></div>
+        <div class="orb orb-bottom"></div>
+
+        <header class="hero">
+            <div class="hero-text">
+                <div class="pill">Software Engineer · Infra & Platforms</div>
+                <h1>Emad Siddiq</h1>
+                <p class="lede">I build reliable systems for identity, infrastructure, and data-heavy products. Recent work includes keeping tier-1 blockchain validators stable at InfStones, modernizing OAuth at Flexport, and shipping fintech services at Fin3.</p>
+                <div class="hero-actions">
+                    <a class="button primary" href="./static/assets/Emad_Siddiq_resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+                    <a class="button" href="mailto:emadsiddiq@berkeley.edu">Contact</a>
+                </div>
+                <div class="meta-grid">
+                    <div>
+                        <p class="label">Location</p>
+                        <p class="muted">San Francisco, CA · Remote-friendly</p>
+                    </div>
+                    <div>
+                        <p class="label">Links</p>
+                        <div class="links">
+                            <a href="https://www.github.com/emad-siddiq" target="_blank" rel="noopener">GitHub</a>
+                            <a href="https://www.linkedin.com/in/esiddiq" target="_blank" rel="noopener">LinkedIn</a>
+                            <a href="mailto:emadsiddiq@berkeley.edu">Email</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel stat">
+                <div class="stat-body">
+                    <img class="avatar" src="./static/assets/pictures/portrait.png" alt="Portrait of Emad Siddiq">
+                    <div>
+                        <p class="label">Current Focus</p>
+                        <p class="stat-text">Hardening validator fleets, shipping resilient identity flows, and building telemetry pipelines.</p>
+                    </div>
+                </div>
+                <div class="stat-footer">
+                    <div>
+                        <p class="stat-value">7+ yrs</p>
+                        <p class="muted">Across infra, IAM, and full stack</p>
+                    </div>
+                    <div>
+                        <p class="stat-value">99.9%</p>
+                        <p class="muted">Validator uptime maintained</p>
+                    </div>
+                </div>
+            </div>
         </header>
 
-        <main class="bg-white bg-opacity-90 rounded-lg shadow-xl p-4 md:p-8 max-w-2xl mx-auto border border-accentGreen">
-            <section id="AboutMe" class="space-y-4 matrix-text">
-                <p class="text-accentGreen command-prompt">> cat about.txt</p>
-                <p class="neon-text text-qatarMaroon">I studied Data Science & Political Economy during my undergraduate at UC Berkeley.</p>
-                <p class="neon-text text-qatarMaroon">Following graduation, I worked as a Software Engineer at <a href="https://www.fin3.tech" class="text-accentGreen hover:text-qatarMaroon">Fin3 Technologies</a> and was later part of the IAM team at <a href="https://www.flexport.com" class="text-accentGreen hover:text-qatarMaroon">Flexport Inc.</a></p>
-                <p class="neon-text text-qatarMaroon">I am currently searching for my next role and would be happy to chat: <a href="mailto:emadsiddiq@berkeley.edu" class="text-accentGreen hover:text-qatarMaroon">emadsiddiq@berkeley.edu</a></p>
-                <p class="text-accentGreen command-prompt">> _</p>
+        <main class="grid">
+            <section class="card wide" aria-labelledby="experience-title">
+                <div class="card-header">
+                    <div>
+                        <p class="eyebrow">Impact</p>
+                        <h2 id="experience-title">Experience</h2>
+                    </div>
+                    <p class="muted">Recent roles and highlights</p>
+                </div>
+                <div class="experience">
+                    <article class="experience-item">
+                        <div class="experience-meta">
+                            <h3>InfStones</h3>
+                            <p class="role">Ecosystem Solutions Architect · Mar 2025 – Present · Remote</p>
+                        </div>
+                        <ul>
+                            <li>Deploy, harden, and monitor validator nodes across tier-1 and emerging L1/L2 networks with 99.9% uptime.</li>
+                            <li>Built a zero-exposed-port observability stack with Prometheus, Loki, Grafana, and Promtail using a custom filesystem scraper.</li>
+                        </ul>
+                    </article>
+                    <article class="experience-item">
+                        <div class="experience-meta">
+                            <h3>Flexport</h3>
+                            <p class="role">Software Engineer, Identity & Access Management · Nov 2022 – Nov 2023 · San Francisco</p>
+                        </div>
+                        <ul>
+                            <li>Replaced legacy authentication with OAuth 2.0 Java microservices, migrating 200k+ users and onboarding teams to the new APIs.</li>
+                            <li>Unified auth for major acquisitions and led security reviews while handling on-call through Grafana, Datadog, and Sumo Logic.</li>
+                        </ul>
+                    </article>
+                    <article class="experience-item">
+                        <div class="experience-meta">
+                            <h3>Fin3 Technologies</h3>
+                            <p class="role">Software Engineer, Full Stack · Jan 2022 – Nov 2022 · New York</p>
+                        </div>
+                        <ul>
+                            <li>Built containerized AWS Java services for tokenized deposits and validated dApps across Cosmos SDK and Tendermint.</li>
+                            <li>Shipped Bitcoin hashrate monitoring with network metrics and integrated XML bank APIs with Java Spring Boot services.</li>
+                        </ul>
+                    </article>
+                    <article class="experience-item">
+                        <div class="experience-meta">
+                            <h3>UC Berkeley School of Law</h3>
+                            <p class="role">Research Associate, Data Science · Sep 2019 – May 2020 · Berkeley</p>
+                        </div>
+                        <ul>
+                            <li>Mined historical USPTO patent data and built ETL pipelines for large-scale processing on a constrained Linux environment.</li>
+                            <li>Implemented tf-idf and cosine similarity matching to accelerate trademark processing from weeks to hours.</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section class="card" aria-labelledby="skills-title">
+                <div class="card-header">
+                    <div>
+                        <p class="eyebrow">Toolkit</p>
+                        <h2 id="skills-title">Skills</h2>
+                    </div>
+                    <p class="muted">Technologies I reach for</p>
+                </div>
+                <div class="pill-list">
+                    <span class="pill">Java</span>
+                    <span class="pill">Python</span>
+                    <span class="pill">Go</span>
+                    <span class="pill">C++</span>
+                    <span class="pill">TypeScript</span>
+                    <span class="pill">Rust</span>
+                    <span class="pill">Spring Boot</span>
+                    <span class="pill">Kubernetes</span>
+                    <span class="pill">Docker</span>
+                    <span class="pill">AWS</span>
+                    <span class="pill">OAuth 2.0 & OIDC</span>
+                    <span class="pill">Grafana</span>
+                    <span class="pill">PostgreSQL</span>
+                    <span class="pill">GraphQL</span>
+                    <span class="pill">React</span>
+                </div>
+            </section>
+
+            <section class="card" aria-labelledby="education-title">
+                <div class="card-header">
+                    <div>
+                        <p class="eyebrow">Education</p>
+                        <h2 id="education-title">UC Berkeley</h2>
+                    </div>
+                    <p class="muted">Data Science & Political Economy</p>
+                </div>
+                <p class="education">B.A. Data Science · B.A. Political Economy</p>
             </section>
         </main>
     </div>
-
-    <script src="./static/js/script.js"></script>
 </body>
 </html>
